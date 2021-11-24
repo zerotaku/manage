@@ -7,11 +7,12 @@ package com.zbf.manage.common.config;
 //import springfox.documentation.builders.RequestHandlerSelectors;
 //import springfox.documentation.spi.DocumentationType;
 //import springfox.documentation.spring.web.plugins.Docket;
-//import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
+////import springfox.documentation.swagger2.annotations.EnableSwagger2;
+//import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
+//
 //@Configuration
-//@EnableSwagger2
-public class Knife4jConfiguration {
+//@EnableSwagger2WebMvc
+//public class Knife4jConfiguration {
 //    @Bean(value = "defaultApi2")
 //    public Docket defaultApi2() {
 //        Docket docket=new Docket(DocumentationType.SWAGGER_2)
@@ -29,4 +30,5 @@ public class Knife4jConfiguration {
 //                .build();
 //        return docket;
 //    }
-}
+//}
+//

@@ -1,32 +1,41 @@
 package com.zbf.manage.controller;
 
-//import io.swagger.annotations.Api;
-//import io.swagger.annotations.ApiImplicitParam;
-//import io.swagger.annotations.ApiOperation;
+import com.zbf.manage.common.util.RetResponse;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.util.StringUtils;
 
 @RestController
+@RequestMapping("/token")
+@Api(value = "/token", description = "保活服务", tags = "token")
 public class TokenController {
 
-    @GetMapping("/index")
-    public String index() {
-        return "花有重开日，人无再少年 → 我是花少【少宫主花无缺】!";
+
+
+    @ApiOperation(value = "需求1", notes = "花少的需求")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name", value = "需求2", required = true)
+    })
+    @GetMapping("/hello/{name}")
+    public String hello(@PathVariable String name) {
+        return String.format("花少需要你们的 %s!", name);
+    }
+
+
+    @PostMapping()
+    public ResponseEntity ping(@PathVariable String token) {
+        if(StringUtils.isEmpty(token)){
+            return new ResponseEntity<>(RetResponse.error("token为空或错误"), HttpStatus.OK);
+        }
+        if(token.equals("CFDAD14E-8785-16D7-E032-6FD489AD0130")){
+
+        }
+        return new ResponseEntity<>(RetResponse.success("成功"), HttpStatus.OK);
     }
 
 }
-
-//@Api(tags = "首页模块")
-//@RestController
-//public class TokenController {
-//
-//    @ApiImplicitParam(name = "name",value = "姓名",required = true)
-//    @ApiOperation(value = "向客人问好")
-//    @GetMapping("/sayHi")
-//    public ResponseEntity<String> sayHi(@RequestParam(value = "name")String name){
-//        return ResponseEntity.ok("Hi:"+name);
-//    }
-//
-//}
