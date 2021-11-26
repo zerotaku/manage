@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbf.manage.mapper.AccessDao">
+  <resultMap id="BaseResultMap" type="com.zbf.manage.entity.Access">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="appkey" jdbcType="VARCHAR" property="appkey" />
+    <result column="callbacks_number" jdbcType="VARCHAR" property="callbacksNumber" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="keep_alive" jdbcType="VARCHAR" property="keepAlive" />
+    <result column="is_enable" jdbcType="BOOLEAN" property="isEnable" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="updater" jdbcType="VARCHAR" property="updater" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="extend" jdbcType="VARCHAR" property="extend" />
+    <result column="extend1" jdbcType="INTEGER" property="extend1" />
+    <result column="extend2" jdbcType="DOUBLE" property="extend2" />
+    <result column="extend3" jdbcType="VARCHAR" property="extend3" />
+    <result column="extend4" jdbcType="VARCHAR" property="extend4" />
+    <result column="extend5" jdbcType="VARCHAR" property="extend5" />
+    <result column="extend6" jdbcType="VARCHAR" property="extend6" />
+    <result column="extend7" jdbcType="VARCHAR" property="extend7" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, appkey, callbacks_number, end_time, keep_alive, is_enable, creator, create_time, 
+    updater, update_time, extend, extend1, extend2, extend3, extend4, extend5, extend6, 
+    extend7
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from access
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from access
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zbf.manage.entity.Access" useGeneratedKeys="true">
+    insert into access (appkey, callbacks_number, end_time, 
+      keep_alive, is_enable, creator, 
+      create_time, updater, update_time, 
+      extend, extend1, extend2, 
+      extend3, extend4, extend5, 
+      extend6, extend7)
+    values (#{appkey,jdbcType=VARCHAR}, #{callbacksNumber,jdbcType=VARCHAR}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{keepAlive,jdbcType=VARCHAR}, #{isEnable,jdbcType=BOOLEAN}, #{creator,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{updater,jdbcType=VARCHAR}, #{updateTime,jdbcType=DATE}, 
+      #{extend,jdbcType=VARCHAR}, #{extend1,jdbcType=INTEGER}, #{extend2,jdbcType=DOUBLE}, 
+      #{extend3,jdbcType=VARCHAR}, #{extend4,jdbcType=VARCHAR}, #{extend5,jdbcType=VARCHAR}, 
+      #{extend6,jdbcType=VARCHAR}, #{extend7,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zbf.manage.entity.Access" useGeneratedKeys="true">
+    insert into access
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appkey != null">
+        appkey,
+      </if>
+      <if test="callbacksNumber != null">
+        callbacks_number,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="keepAlive != null">
+        keep_alive,
+      </if>
+      <if test="isEnable != null">
+        is_enable,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="extend != null">
+        extend,
+      </if>
+      <if test="extend1 != null">
+        extend1,
+      </if>
+      <if test="extend2 != null">
+        extend2,
+      </if>
+      <if test="extend3 != null">
+        extend3,
+      </if>
+      <if test="extend4 != null">
+        extend4,
+      </if>
+      <if test="extend5 != null">
+        extend5,
+      </if>
+      <if test="extend6 != null">
+        extend6,
+      </if>
+      <if test="extend7 != null">
+        extend7,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appkey != null">
+        #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="callbacksNumber != null">
+        #{callbacksNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="keepAlive != null">
+        #{keepAlive,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null">
+        #{isEnable,jdbcType=BOOLEAN},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updater != null">
+        #{updater,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="extend != null">
+        #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="extend1 != null">
+        #{extend1,jdbcType=INTEGER},
+      </if>
+      <if test="extend2 != null">
+        #{extend2,jdbcType=DOUBLE},
+      </if>
+      <if test="extend3 != null">
+        #{extend3,jdbcType=VARCHAR},
+      </if>
+      <if test="extend4 != null">
+        #{extend4,jdbcType=VARCHAR},
+      </if>
+      <if test="extend5 != null">
+        #{extend5,jdbcType=VARCHAR},
+      </if>
+      <if test="extend6 != null">
+        #{extend6,jdbcType=VARCHAR},
+      </if>
+      <if test="extend7 != null">
+        #{extend7,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zbf.manage.entity.Access">
+    update access
+    <set>
+      <if test="appkey != null">
+        appkey = #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="callbacksNumber != null">
+        callbacks_number = #{callbacksNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="keepAlive != null">
+        keep_alive = #{keepAlive,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null">
+        is_enable = #{isEnable,jdbcType=BOOLEAN},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updater != null">
+        updater = #{updater,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="extend != null">
+        extend = #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="extend1 != null">
+        extend1 = #{extend1,jdbcType=INTEGER},
+      </if>
+      <if test="extend2 != null">
+        extend2 = #{extend2,jdbcType=DOUBLE},
+      </if>
+      <if test="extend3 != null">
+        extend3 = #{extend3,jdbcType=VARCHAR},
+      </if>
+      <if test="extend4 != null">
+        extend4 = #{extend4,jdbcType=VARCHAR},
+      </if>
+      <if test="extend5 != null">
+        extend5 = #{extend5,jdbcType=VARCHAR},
+      </if>
+      <if test="extend6 != null">
+        extend6 = #{extend6,jdbcType=VARCHAR},
+      </if>
+      <if test="extend7 != null">
+        extend7 = #{extend7,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zbf.manage.entity.Access">
+    update access
+    set appkey = #{appkey,jdbcType=VARCHAR},
+      callbacks_number = #{callbacksNumber,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      keep_alive = #{keepAlive,jdbcType=VARCHAR},
+      is_enable = #{isEnable,jdbcType=BOOLEAN},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      updater = #{updater,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=DATE},
+      extend = #{extend,jdbcType=VARCHAR},
+      extend1 = #{extend1,jdbcType=INTEGER},
+      extend2 = #{extend2,jdbcType=DOUBLE},
+      extend3 = #{extend3,jdbcType=VARCHAR},
+      extend4 = #{extend4,jdbcType=VARCHAR},
+      extend5 = #{extend5,jdbcType=VARCHAR},
+      extend6 = #{extend6,jdbcType=VARCHAR},
+      extend7 = #{extend7,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

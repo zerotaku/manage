@@ -1,20 +1,24 @@
 package com.zbf.manage.controller;
 
 import com.zbf.manage.common.util.RetResponse;
+import com.zbf.manage.service.AccessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 @RestController
-@RequestMapping("/token")
-@Api(value = "/token", description = "保活服务", tags = "token")
-public class TokenController {
+@RequestMapping("/common")
+@Api(value = "/common", description = "保活服务", tags = "common")
+public class CommonController {
 
+    @Autowired
+    private AccessService accessService;
 
 
     @ApiOperation(value = "需求1", notes = "花少的需求")
@@ -27,15 +31,9 @@ public class TokenController {
     }
 
 
-    @PostMapping()
-    public ResponseEntity ping(@PathVariable String token) {
-        if(StringUtils.isEmpty(token)){
-            return new ResponseEntity<>(RetResponse.error("token为空或错误"), HttpStatus.OK);
-        }
-        if(token.equals("CFDAD14E-8785-16D7-E032-6FD489AD0130")){
-
-        }
-        return new ResponseEntity<>(RetResponse.success("成功"), HttpStatus.OK);
+    @PostMapping("keepAlive/{key}")
+    public ResponseEntity keepAlive(@PathVariable String key) {
+        return accessService.keepAlive(key);
     }
 
 }
